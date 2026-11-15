@@ -1,0 +1,50 @@
+/* Paint the entire Obsidian status bar when enabled in plugin settings */
+body.paint-status-bar-accent .status-bar {
+	color: var(--color-accent) !important;
+}
+
+.sb-stopwatch-container {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-variant-numeric: tabular-nums;
+}
+
+.sb-stopwatch-btn,
+.sb-stopwatch-reset {
+	cursor: pointer;
+	padding: 0 3px;
+	border-radius: 3px;
+	transition: opacity 0.15s ease;
+}
+
+.sb-stopwatch-btn:hover,
+.sb-stopwatch-reset:hover {
+	opacity: 0.75;
+}
+
+.sb-clock-display {
+	font-variant-numeric: tabular-nums;
+}
+
+.sb-stopwatch-btn,
+.sb-stopwatch-reset {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	cursor: pointer;
+	padding: 0 3px;
+	border-radius: 3px;
+	transition: opacity 0.15s ease;
+}
+
+.sb-stopwatch-icon {
+	display: inline-flex;
+	align-items: center;
+}
+
+.sb-stopwatch-icon svg,
+.sb-stopwatch-reset svg {
+	width: 14px;
+	height: 14px;
+}

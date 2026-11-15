@@ -1,11 +1,9 @@
 {
-	"id": "status-bar-clock",
-	"name": "Status Bar Clock",
-	"version": "1.0.10",
-	"minAppVersion": "0.15.0",
-	"description": "Status bar clock.",
-	"author": "Marty Ballard",
-	"authorUrl": "https://pillar-soft.com",
-	"fundingUrl": "https://buymeacoffee.com/marty331",
+	"id": "painted-status-bar-stopwatch",
+	"name": "Painted Status Bar Clock and Stopwatch",
+	"version": "1.0.0",
+	"minAppVersion": "1.5.0",
+	"description": "Customizable 12/24h status bar clock, session stopwatch, and accent status bar styling.",
+	"author": "@PoeticPolytech ",
 	"isDesktopOnly": true
 }
