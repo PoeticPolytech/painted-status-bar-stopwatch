@@ -1,14 +1,24 @@
 # Painted Status Bar Clock and Stopwatch
 
-A lightweight desktop Obsidian plugin that adds a customizable 12/24-hour clock, a pausable session stopwatch with Lucide icons, and an optional full status bar theme accent paint.
+A lightweight desktop Obsidian plugin that adds a customizable 12/24h status bar clock, optional session stopwatch, and optional status bar styling with accent color.
 
 Forked and expanded from [marty331/status-bar-clock-obsidian](https://github.com/marty331/status-bar-clock-obsidian).
 
-<img width="127" height="30" alt="Status bar clock and HH:MM:SS stopwatch" src="[https://github.com/user-attachments/assets/a4d82c9d-014f-49aa-9e46-612f094c3109](https://github.com/user-attachments/assets/a4d82c9d-014f-49aa-9e46-612f094c3109)" />
+---
+### **12-hour clock with seconds and HH:MM:SS stopwatch**
+<img width="245" height="32" alt="Clock and HH:MM:SS stopwatch" src="https://github.com/user-attachments/assets/366632dd-3cbf-4bec-9b4a-b3dedcb1b094" />
 
-<img width="188" height="33" alt="Status bar 24-hour clock with seconds and stopwatch" src="[https://github.com/user-attachments/assets/0c5e930c-9b77-4d25-8c82-1372a8ba32cd](https://github.com/user-attachments/assets/0c5e930c-9b77-4d25-8c82-1372a8ba32cd)" />
+---
 
-<!-- Paste a screenshot of the MM:SS stopwatch format right here -->
+### **24-hour clock with seconds and HH:MM:SS stopwatch**
+<img width="231" height="33" alt="24-hour clock with seconds and HH:MM:SS stopwatch" src="https://github.com/user-attachments/assets/741e332d-5189-4e4e-b3bd-0833155e3875" />
+
+---
+
+### 24-hour clock and MM:SS stopwatch
+<img width="182" height="32" alt="image" src="https://github.com/user-attachments/assets/0ef76ee1-7e54-472e-a79c-4f35bd98b98b" />
+
+
 
 
 ## Features
@@ -19,7 +29,8 @@ Forked and expanded from [marty331/status-bar-clock-obsidian](https://github.com
 - **Minutes-Only Stopwatch Format (`MM:SS`):** Switch live between standard `HH:MM:SS` and uncapped `MM:SS` (e.g., `90:00`) without losing or resetting elapsed session time.
 - **Accent Status Bar Paint:** Toggle your active Obsidian theme's accent color (`--color-accent`) across the entire status bar without needing a separate CSS snippet.
 
-<!-- Replace the outdated 4-toggle screenshot below with new 5-toggle settings screenshot -->
+<img width="752" height="483" alt="image" src="https://github.com/user-attachments/assets/23ea5811-fccf-405f-9172-ce6afc092820" />
+
 
 
 
