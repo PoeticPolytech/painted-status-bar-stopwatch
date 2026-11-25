@@ -1,15 +1,15 @@
 {
-	"name": "obsidian-status-bar-clock",
-	"version": "1.0.4",
-	"description": "This is a status bar clock plugin for Obsidian.",
+  "name": "painted-status-bar-stopwatch",
+  "version": "2.0.0",
+  "description": "Customizable 12/24h status bar clock, session stopwatch, and accent color status bar styling.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
-	"keywords": [],
-	"author": "",
+	"keywords": ["obsidian", "obsidian-plugin", "status-bar", "clock", "stopwatch", "timer"],
+	"author": "PoeticPolytech",
 	"license": "MIT",
 	"devDependencies": {
 		"@types/node": "^16.11.6",
