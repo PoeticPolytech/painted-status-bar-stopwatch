@@ -4,6 +4,7 @@ interface ClockStopwatchSettings {
 	use24Hour: boolean;
 	showSeconds: boolean;
 	enableStopwatch: boolean;
+	stopwatchMinutesOnly: boolean;
 	paintStatusBar: boolean;
 }
 
@@ -11,6 +12,7 @@ const DEFAULT_SETTINGS: ClockStopwatchSettings = {
 	use24Hour: false,
 	showSeconds: false,
 	enableStopwatch: true,
+	stopwatchMinutesOnly: false,
 	paintStatusBar: true,
 };
 
@@ -60,6 +62,7 @@ export default class StatusBarClockStopwatchPlugin extends Plugin {
 		this.applyStatusBarPaint();
 		this.updateClockDisplay();
 		this.refreshStopwatchVisibility();
+		this.updateStopwatchDisplay();
 	}
 
 	private applyStatusBarPaint() {
@@ -129,11 +132,18 @@ export default class StatusBarClockStopwatchPlugin extends Plugin {
 
 	private formatDuration(totalMs: number): string {
 		const totalSeconds = Math.floor(totalMs / 1000);
+		const pad = (n: number) => String(n).padStart(2, '0');
+
+		if (this.settings.stopwatchMinutesOnly) {
+			const totalMinutes = Math.floor(totalSeconds / 60);
+			const seconds = totalSeconds % 60;
+			return `${pad(totalMinutes)}:${pad(seconds)}`;
+		}
+
 		const hours = Math.floor(totalSeconds / 3600);
 		const minutes = Math.floor((totalSeconds % 3600) / 60);
 		const seconds = totalSeconds % 60;
 
-		const pad = (n: number) => String(n).padStart(2, '0');
 		return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 	}
 
@@ -194,13 +204,25 @@ class ClockStopwatchSettingTab extends PluginSettingTab {
 		);
 
 		new Setting(containerEl)
-		.setName('Enable study stopwatch')
+		.setName('Enable session stopwatch')
 		.setDesc('Show a pausable stopwatch in the status bar for timing sessions.')
 		.addToggle((toggle) =>
 		toggle
 		.setValue(this.plugin.settings.enableStopwatch)
 		.onChange(async (value) => {
 			this.plugin.settings.enableStopwatch = value;
+			await this.plugin.saveSettings();
+		})
+		);
+
+		new Setting(containerEl)
+		.setName('Show stopwatch in minutes only')
+		.setDesc('Format elapsed stopwatch time as MM:SS instead of HH:MM:SS.')
+		.addToggle((toggle) =>
+		toggle
+		.setValue(this.plugin.settings.stopwatchMinutesOnly)
+		.onChange(async (value) => {
+			this.plugin.settings.stopwatchMinutesOnly = value;
 			await this.plugin.saveSettings();
 		})
 		);
