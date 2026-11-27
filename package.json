@@ -1,6 +1,6 @@
 {
   "name": "painted-status-bar-stopwatch",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Customizable 12/24h status bar clock, session stopwatch, and accent color status bar styling.",
 	"main": "main.js",
 	"scripts": {

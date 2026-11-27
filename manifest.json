@@ -1,7 +1,7 @@
 {
 	"id": "painted-status-bar-stopwatch",
 	"name": "Painted Status Bar Clock and Stopwatch",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"minAppVersion": "1.15.0",
 	"description": "Customizable 12/24h status bar clock, optional session stopwatch, and optional status bar styling with accent color.",
 	"author": "PoeticPolytech",
