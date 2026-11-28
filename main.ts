@@ -1,5 +1,7 @@
 import { App, Plugin, PluginSettingTab, Setting, moment, setIcon } from 'obsidian';
 
+const getMoment = moment as () => { format: (fmt: string) => string };
+
 interface ClockStopwatchSettings {
 	use24Hour: boolean;
 	showSeconds: boolean;
@@ -54,7 +56,8 @@ export default class StatusBarClockStopwatchPlugin extends Plugin {
 	}
 
 	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		const loadedData = (await this.loadData()) as Partial<ClockStopwatchSettings> | null;
+		this.settings = Object.assign({}, DEFAULT_SETTINGS, loadedData);
 	}
 
 	async saveSettings() {
@@ -132,7 +135,7 @@ export default class StatusBarClockStopwatchPlugin extends Plugin {
 
 	private formatDuration(totalMs: number): string {
 		const totalSeconds = Math.floor(totalMs / 1000);
-		const pad = (n: number) => String(n).padStart(2, '0');
+		const pad = (n: number): string => (n < 10 ? `0${n}` : String(n));
 
 		if (this.settings.stopwatchMinutesOnly) {
 			const totalMinutes = Math.floor(totalSeconds / 60);
@@ -159,11 +162,15 @@ export default class StatusBarClockStopwatchPlugin extends Plugin {
 
 	private updateClockDisplay() {
 		if (!this.clockEl) return;
-		let formatStr = this.settings.use24Hour ? 'HH:mm' : 'h:mm A';
-		if (this.settings.showSeconds) {
-			formatStr = this.settings.use24Hour ? 'HH:mm:ss' : 'h:mm:ss A';
+
+		let formatStr: string;
+		if (this.settings.use24Hour) {
+			formatStr = this.settings.showSeconds ? 'HH:mm:ss' : 'HH:mm';
+		} else {
+			formatStr = this.settings.showSeconds ? 'h:mm:ss A' : 'h:mm A';
 		}
-		this.clockEl.setText(moment().format(formatStr));
+
+		this.clockEl.setText(getMoment().format(formatStr));
 	}
 }
 
