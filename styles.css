@@ -9,6 +9,7 @@ body.paint-status-bar-accent .app-container .status-bar .status-bar-item {
 	align-items: center;
 	gap: 6px;
 	font-variant-numeric: tabular-nums;
+	margin-left: auto;
 }
 
 .sb-clock-display {

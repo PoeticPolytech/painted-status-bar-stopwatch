@@ -181,6 +181,100 @@ class ClockStopwatchSettingTab extends PluginSettingTab {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
+	getSettingDefinitions() {
+		const defs: Array<{
+			name: string;
+			desc: string;
+			render: (containerEl: HTMLElement) => void;
+		}> = [
+			{
+				name: '24-hour clock format',
+				desc: 'Use 24-hour military time (HH:mm) instead of 12-hour AM/PM.',
+				render: (containerEl) => {
+					new Setting(containerEl)
+					.setName('24-hour clock format')
+					.setDesc('Use 24-hour military time (HH:mm) instead of 12-hour AM/PM.')
+					.addToggle((toggle) =>
+					toggle
+					.setValue(this.plugin.settings.use24Hour)
+					.onChange(async (value) => {
+						this.plugin.settings.use24Hour = value;
+						await this.plugin.saveSettings();
+					})
+					);
+				},
+			},
+			{
+				name: 'Show seconds',
+				desc: 'Display seconds on the status bar clock.',
+				render: (containerEl) => {
+					new Setting(containerEl)
+					.setName('Show seconds')
+					.setDesc('Display seconds on the status bar clock.')
+					.addToggle((toggle) =>
+					toggle
+					.setValue(this.plugin.settings.showSeconds)
+					.onChange(async (value) => {
+						this.plugin.settings.showSeconds = value;
+						await this.plugin.saveSettings();
+					})
+					);
+				},
+			},
+			{
+				name: 'Enable session stopwatch',
+				desc: 'Show a pausable stopwatch in the status bar for timing sessions.',
+				render: (containerEl) => {
+					new Setting(containerEl)
+					.setName('Enable session stopwatch')
+					.setDesc('Show a pausable stopwatch in the status bar for timing sessions.')
+					.addToggle((toggle) =>
+					toggle
+					.setValue(this.plugin.settings.enableStopwatch)
+					.onChange(async (value) => {
+						this.plugin.settings.enableStopwatch = value;
+						await this.plugin.saveSettings();
+					})
+					);
+				},
+			},
+			{
+				name: 'Show stopwatch in minutes only',
+				desc: 'Format elapsed stopwatch time as MM:SS instead of HH:MM:SS.',
+				render: (containerEl) => {
+					new Setting(containerEl)
+					.setName('Show stopwatch in minutes only')
+					.setDesc('Format elapsed stopwatch time as MM:SS instead of HH:MM:SS.')
+					.addToggle((toggle) =>
+					toggle
+					.setValue(this.plugin.settings.stopwatchMinutesOnly)
+					.onChange(async (value) => {
+						this.plugin.settings.stopwatchMinutesOnly = value;
+						await this.plugin.saveSettings();
+					})
+					);
+				},
+			},
+			{
+				name: 'Paint status bar with accent color',
+				desc: 'Apply your theme accent color across the entire status bar.',
+				render: (containerEl) => {
+					new Setting(containerEl)
+					.setName('Paint status bar with accent color')
+					.setDesc('Apply your theme accent color across the entire status bar.')
+					.addToggle((toggle) =>
+					toggle
+					.setValue(this.plugin.settings.paintStatusBar)
+					.onChange(async (value) => {
+						this.plugin.settings.paintStatusBar = value;
+						await this.plugin.saveSettings();
+					})
+					);
+				},
+			},
+		];
+		return defs;
+	}
 
 	display(): void {
 		const { containerEl } = this;
